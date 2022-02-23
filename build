@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+envsubst '$PROXY_DESTINATION_ENV $NGINX_LOCATION_ENV'< ./Dockerfile | docker build -t apiproxy . -f -
+
+echo 'Run the proxy with "docker run -d -p 8000:80 apiproxy"'
